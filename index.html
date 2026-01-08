@@ -1073,19 +1073,450 @@
                   integrated CRM without ever leaving the platform.
                 </p>
               </div>
+              <!-- CRM Dashboard Animation -->
               <div
-                class="md:w-1/2 bg-neutral-50 rounded-2xl border border-black/10 p-6 relative overflow-hidden flex flex-col justify-center"
+                class="md:w-1/2 bg-white rounded-2xl border border-black/10 relative overflow-hidden shadow-lg flex"
+                style="max-height: 500px"
               >
+                <!-- Left Sidebar - Filters -->
                 <div
-                  class="bg-neutral-100 rounded-xl shadow-sm border border-black/10 overflow-hidden p-5"
+                  class="w-[100px] bg-neutral-50 border-r border-neutral-200 p-2.5 flex-shrink-0 relative animate-fade-up"
+                  style="animation-delay: 0.1s"
                 >
-                  <p class="text-sm text-neutral-800 leading-relaxed">
-                    Hey James, <br /><br />
-                    Saw you guys just posted looking for a
-                    <span class="bg-yellow-900/50 text-yellow-200 px-1 rounded"
-                      >Head of Security</span
-                    >...
-                  </p>
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-1.5">
+                      <i
+                        data-lucide="filter"
+                        class="w-3.5 h-3.5 text-neutral-600"
+                      ></i>
+                      <span class="text-[11px] font-semibold text-neutral-700"
+                        >Filters</span
+                      >
+                    </div>
+                    <div
+                      class="w-4 h-4 flex items-center justify-center text-neutral-400"
+                    >
+                      <i data-lucide="chevron-left" class="w-3 h-3"></i>
+                    </div>
+                  </div>
+
+                  <div class="space-y-1.5 overflow-y-auto max-h-[440px]">
+                    <!-- Company -->
+                    <div class="animate-fade-up" style="animation-delay: 0.15s">
+                      <label
+                        class="text-[9px] font-medium text-neutral-600 mb-0.5 block"
+                        >Company</label
+                      >
+                      <div
+                        class="crm-company-field w-full bg-white border-2 border-teal-500 rounded px-2 py-1 text-[9px] text-neutral-500 animate-pulse-glow"
+                      >
+                        company...
+                      </div>
+                    </div>
+
+                    <!-- Industry -->
+                    <div class="animate-fade-up" style="animation-delay: 0.2s">
+                      <label
+                        class="text-[9px] font-medium text-neutral-600 mb-0.5 block"
+                        >Industry</label
+                      >
+                      <div
+                        class="crm-industry-field w-full bg-white border border-neutral-300 rounded px-2 py-1 text-[9px] text-neutral-500"
+                      >
+                        industry...
+                      </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="animate-fade-up" style="animation-delay: 0.25s">
+                      <label
+                        class="text-[9px] font-medium text-neutral-600 mb-0.5 block"
+                        >Location</label
+                      >
+                      <div
+                        class="crm-location-field w-full bg-white border border-neutral-300 rounded px-2 py-1 text-[9px] text-neutral-500"
+                      >
+                        location...
+                      </div>
+                    </div>
+
+                    <!-- Tags -->
+                    <div class="animate-fade-up" style="animation-delay: 0.3s">
+                      <label
+                        class="text-[9px] font-medium text-neutral-600 mb-0.5 block"
+                        >Tags</label
+                      >
+                      <div
+                        class="crm-tags-field w-full bg-white border border-neutral-300 rounded px-2 py-1 text-[9px] text-neutral-500"
+                      >
+                        tags...
+                      </div>
+                    </div>
+
+                    <!-- First Name -->
+                    <div class="animate-fade-up" style="animation-delay: 0.35s">
+                      <label
+                        class="text-[9px] font-medium text-neutral-600 mb-0.5 block"
+                        >First Name</label
+                      >
+                      <div
+                        class="crm-firstname-field w-full bg-white border border-neutral-300 rounded px-2 py-1 text-[9px] text-neutral-400"
+                      >
+                        First Name
+                      </div>
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="animate-fade-up" style="animation-delay: 0.4s">
+                      <label
+                        class="text-[9px] font-medium text-neutral-600 mb-0.5 block"
+                        >Last Name</label
+                      >
+                      <div
+                        class="crm-lastname-field w-full bg-white border border-neutral-300 rounded px-2 py-1 text-[9px] text-neutral-400"
+                      >
+                        Last Name
+                      </div>
+                    </div>
+
+                    <!-- LinkedIn URL -->
+                    <div class="animate-fade-up" style="animation-delay: 0.45s">
+                      <label
+                        class="text-[9px] font-medium text-neutral-600 mb-0.5 block"
+                        >LinkedIn URL</label
+                      >
+                      <div
+                        class="crm-linkedin-field w-full bg-white border border-neutral-300 rounded px-2 py-1 text-[9px] text-neutral-400"
+                      >
+                        LinkedIn URL
+                      </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="animate-fade-up" style="animation-delay: 0.5s">
+                      <label
+                        class="text-[9px] font-medium text-neutral-600 mb-0.5 block flex items-center gap-1"
+                        >Email</label
+                      >
+                      <div
+                        class="crm-email-field w-full bg-white border border-neutral-300 rounded px-2 py-1 text-[9px] text-neutral-400 flex items-center gap-1"
+                      >
+                        <span>Email</span>
+                        <i
+                          data-lucide="mail"
+                          class="w-2.5 h-2.5 text-green-500 ml-auto"
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Main Content Area -->
+                <div
+                  class="flex-1 flex flex-col animate-fade-up"
+                  style="animation-delay: 0.2s"
+                >
+                  <!-- Top Bar - Search & Actions -->
+                  <div class="p-2.5 border-b border-neutral-200">
+                    <div class="flex items-center gap-1.5 mb-2">
+                      <div class="flex-1 relative min-w-0">
+                        <div
+                          class="crm-search-bar w-full bg-neutral-50 border border-neutral-300 rounded-lg px-2.5 py-1.5 text-[10px] text-neutral-500 animate-pulse-glow truncate"
+                          style="
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            max-width: 100%;
+                          "
+                        >
+                          Search...
+                        </div>
+                      </div>
+                      <div
+                        class="bg-teal-50 text-teal-600 px-2.5 py-1.5 rounded-lg text-[10px] font-medium flex items-center gap-1 animate-fade-up"
+                        style="animation-delay: 0.3s"
+                      >
+                        <i data-lucide="user-plus" class="w-3 h-3"></i>
+                        <span>+ Add Lead</span>
+                      </div>
+                      <div
+                        class="crm-campaign-btn bg-[#2563eb] text-white px-2.5 py-1.5 rounded-lg text-[10px] font-medium flex items-center gap-1 animate-fade-up cursor-pointer transition-transform"
+                        style="animation-delay: 0.35s"
+                      >
+                        <i data-lucide="send" class="w-3 h-3"></i>
+                        <span>Campaign</span>
+                      </div>
+                      <div
+                        class="bg-[#2563eb] text-white px-1.5 py-1.5 rounded-lg"
+                      >
+                        <i data-lucide="more-vertical" class="w-3 h-3"></i>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Data Table -->
+                  <div class="flex-1 overflow-auto">
+                    <table class="crm-table w-full text-left">
+                      <thead class="bg-neutral-50 sticky top-0">
+                        <tr>
+                          <th
+                            class="px-2 py-1.5 text-[9px] font-semibold text-neutral-600"
+                          >
+                            <div
+                              class="w-2.5 h-2.5 rounded border border-neutral-300 bg-white"
+                            ></div>
+                          </th>
+                          <th
+                            class="px-2 py-1.5 text-[9px] font-semibold text-neutral-600"
+                          >
+                            Name
+                          </th>
+                          <th
+                            class="px-2 py-1.5 text-[9px] font-semibold text-neutral-600"
+                          >
+                            Company
+                          </th>
+                          <th
+                            class="px-2 py-1.5 text-[9px] font-semibold text-neutral-600"
+                          >
+                            Industry
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <!-- Row 1 -->
+                        <tr
+                          class="border-b border-neutral-100 hover:bg-neutral-50 transition-colors animate-slide-in"
+                          style="animation-delay: 0.55s"
+                        >
+                          <td class="px-2 py-1.5">
+                            <div
+                              class="w-2.5 h-2.5 rounded border border-neutral-300 bg-white"
+                            ></div>
+                          </td>
+                          <td
+                            class="px-2 py-1.5 text-[10px] font-medium text-neutral-800"
+                          >
+                            Sarah Chen
+                          </td>
+                          <td class="px-2 py-1.5 text-[10px] text-neutral-700">
+                            TechCorp Solutions
+                          </td>
+                          <td class="px-2 py-1.5 text-[10px] text-neutral-500">
+                            Software
+                          </td>
+                        </tr>
+
+                        <!-- Row 2 -->
+                        <tr
+                          class="border-b border-neutral-100 hover:bg-neutral-50 transition-colors animate-slide-in"
+                          style="animation-delay: 0.6s"
+                        >
+                          <td class="px-2 py-1.5">
+                            <div
+                              class="w-2.5 h-2.5 rounded border border-neutral-300 bg-white"
+                            ></div>
+                          </td>
+                          <td
+                            class="px-2 py-1.5 text-[10px] font-medium text-neutral-800"
+                          >
+                            Michael Rodriguez
+                          </td>
+                          <td class="px-2 py-1.5 text-[10px] text-neutral-700">
+                            Digital Ventures Inc
+                          </td>
+                          <td class="px-2 py-1.5 text-[10px] text-neutral-500">
+                            Technology
+                          </td>
+                        </tr>
+
+                        <!-- Row 3 -->
+                        <tr
+                          class="border-b border-neutral-100 hover:bg-neutral-50 transition-colors animate-slide-in"
+                          style="animation-delay: 0.65s"
+                        >
+                          <td class="px-2 py-1.5">
+                            <div
+                              class="w-2.5 h-2.5 rounded border border-neutral-300 bg-white"
+                            ></div>
+                          </td>
+                          <td
+                            class="px-2 py-1.5 text-[10px] font-medium text-neutral-800"
+                          >
+                            Emily Johnson
+                          </td>
+                          <td class="px-2 py-1.5 text-[10px] text-neutral-700">
+                            Cloud Systems Ltd
+                          </td>
+                          <td class="px-2 py-1.5 text-[10px] text-neutral-500">
+                            Cloud Services
+                          </td>
+                        </tr>
+
+                        <!-- Row 4 -->
+                        <tr
+                          class="border-b border-neutral-100 hover:bg-neutral-50 transition-colors animate-slide-in"
+                          style="animation-delay: 0.7s"
+                        >
+                          <td class="px-2 py-1.5">
+                            <div
+                              class="w-2.5 h-2.5 rounded border border-neutral-300 bg-white"
+                            ></div>
+                          </td>
+                          <td
+                            class="px-2 py-1.5 text-[10px] font-medium text-neutral-800"
+                          >
+                            David Kim
+                          </td>
+                          <td class="px-2 py-1.5 text-[10px] text-neutral-700">
+                            StartupXYZ
+                          </td>
+                          <td class="px-2 py-1.5 text-[10px] text-neutral-500">
+                            SaaS
+                          </td>
+                        </tr>
+
+                        <!-- Row 5 -->
+                        <tr
+                          class="border-b border-neutral-100 hover:bg-neutral-50 transition-colors animate-slide-in"
+                          style="animation-delay: 0.75s"
+                        >
+                          <td class="px-2 py-1.5">
+                            <div
+                              class="w-2.5 h-2.5 rounded border border-neutral-300 bg-white"
+                            ></div>
+                          </td>
+                          <td
+                            class="px-2 py-1.5 text-[10px] font-medium text-neutral-800"
+                          >
+                            Lisa Anderson
+                          </td>
+                          <td class="px-2 py-1.5 text-[10px] text-neutral-700">
+                            Global Enterprises
+                          </td>
+                          <td class="px-2 py-1.5 text-[10px] text-neutral-500">
+                            Consulting
+                          </td>
+                        </tr>
+
+                        <!-- Row 6 -->
+                        <tr
+                          class="border-b border-neutral-100 hover:bg-neutral-50 transition-colors animate-slide-in"
+                          style="animation-delay: 0.8s"
+                        >
+                          <td class="px-2 py-1.5">
+                            <div
+                              class="w-2.5 h-2.5 rounded border border-neutral-300 bg-white"
+                            ></div>
+                          </td>
+                          <td
+                            class="px-2 py-1.5 text-[10px] font-medium text-neutral-800"
+                          >
+                            James Wilson
+                          </td>
+                          <td class="px-2 py-1.5 text-[10px] text-neutral-700">
+                            AI Innovations
+                          </td>
+                          <td class="px-2 py-1.5 text-[10px] text-neutral-500">
+                            Artificial Intelligence
+                          </td>
+                        </tr>
+
+                        <!-- Row 7 -->
+                        <tr
+                          class="border-b border-neutral-100 hover:bg-neutral-50 transition-colors animate-slide-in"
+                          style="animation-delay: 0.85s"
+                        >
+                          <td class="px-2 py-1.5">
+                            <div
+                              class="w-2.5 h-2.5 rounded border border-neutral-300 bg-white"
+                            ></div>
+                          </td>
+                          <td
+                            class="px-2 py-1.5 text-[10px] font-medium text-neutral-800"
+                          >
+                            Maria Garcia
+                          </td>
+                          <td class="px-2 py-1.5 text-[10px] text-neutral-700">
+                            DataFlow Systems
+                          </td>
+                          <td class="px-2 py-1.5 text-[10px] text-neutral-500">
+                            Data Analytics
+                          </td>
+                        </tr>
+
+                        <!-- Row 8 -->
+                        <tr
+                          class="border-b border-neutral-100 hover:bg-neutral-50 transition-colors animate-slide-in"
+                          style="animation-delay: 0.9s"
+                        >
+                          <td class="px-2 py-1.5">
+                            <div
+                              class="w-2.5 h-2.5 rounded border border-neutral-300 bg-white"
+                            ></div>
+                          </td>
+                          <td
+                            class="px-2 py-1.5 text-[10px] font-medium text-neutral-800"
+                          >
+                            Robert Taylor
+                          </td>
+                          <td class="px-2 py-1.5 text-[10px] text-neutral-700">
+                            SecureNet Corp
+                          </td>
+                          <td class="px-2 py-1.5 text-[10px] text-neutral-500">
+                            Cybersecurity
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <!-- Pagination -->
+                  <div
+                    class="p-2 border-t border-neutral-200 flex items-center justify-between animate-fade-up"
+                    style="animation-delay: 0.65s"
+                  >
+                    <div class="flex items-center gap-2">
+                      <span class="text-[9px] text-neutral-600"
+                        >Showing 1 to 8 of 24 results</span
+                      >
+                      <div class="flex items-center gap-1.5">
+                        <span class="text-[9px] text-neutral-600">Show:</span>
+                        <div
+                          class="bg-white border border-neutral-300 rounded px-1.5 py-0.5 text-[9px] text-neutral-700"
+                        >
+                          10
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                      <div class="px-1.5 py-0.5 text-[9px] text-neutral-400">
+                        ←
+                      </div>
+                      <span class="text-[9px] text-neutral-700"
+                        >Page 1 of 3</span
+                      >
+                      <div class="flex items-center gap-1">
+                        <span class="text-[9px] text-neutral-600">Go to:</span>
+                        <div
+                          class="w-6 px-1 py-0.5 border border-neutral-300 rounded text-[9px] text-center text-neutral-700"
+                        >
+                          1
+                        </div>
+                      </div>
+                      <div class="px-1.5 py-0.5 text-[9px] text-neutral-400">
+                        →
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Floating Chat Button -->
+                <div
+                  class="absolute bottom-3 right-3 w-9 h-9 bg-[#2563eb] text-white rounded-full flex items-center justify-center shadow-lg animate-fade-up animate-pulse-glow"
+                  style="animation-delay: 0.7s"
+                >
+                  <i data-lucide="message-circle" class="w-4 h-4"></i>
                 </div>
               </div>
             </div>
@@ -3884,6 +4315,301 @@
         function sleep(ms) {
           return new Promise((resolve) => setTimeout(resolve, ms));
         }
+
+        // CRM Animation Script
+        (function () {
+          // Sample data for table
+          const tableDataSets = [
+            [
+              {
+                name: "Sarah Chen",
+                company: "TechCorp Solutions",
+                industry: "Software",
+              },
+              {
+                name: "Michael Rodriguez",
+                company: "Digital Ventures Inc",
+                industry: "Technology",
+              },
+              {
+                name: "Emily Johnson",
+                company: "Cloud Systems Ltd",
+                industry: "Cloud Services",
+              },
+              { name: "David Kim", company: "StartupXYZ", industry: "SaaS" },
+              {
+                name: "Lisa Anderson",
+                company: "Global Enterprises",
+                industry: "Consulting",
+              },
+              {
+                name: "James Wilson",
+                company: "AI Innovations",
+                industry: "Artificial Intelligence",
+              },
+              {
+                name: "Maria Garcia",
+                company: "DataFlow Systems",
+                industry: "Data Analytics",
+              },
+              {
+                name: "Robert Taylor",
+                company: "SecureNet Corp",
+                industry: "Cybersecurity",
+              },
+            ],
+            [
+              {
+                name: "John Smith",
+                company: "FinanceHub",
+                industry: "Financial Services",
+              },
+              {
+                name: "Anna Martinez",
+                company: "HealthTech Solutions",
+                industry: "Healthcare",
+              },
+              {
+                name: "Chris Brown",
+                company: "EduTech Platform",
+                industry: "Education",
+              },
+              { name: "Sophie Lee", company: "RetailMax", industry: "Retail" },
+              {
+                name: "Tom Wilson",
+                company: "Manufacturing Pro",
+                industry: "Manufacturing",
+              },
+              {
+                name: "Emma Davis",
+                company: "RealEstate Plus",
+                industry: "Real Estate",
+              },
+              {
+                name: "Alex Johnson",
+                company: "Media Corp",
+                industry: "Media",
+              },
+              {
+                name: "Rachel Green",
+                company: "Energy Solutions",
+                industry: "Energy",
+              },
+            ],
+            [
+              {
+                name: "Mark Thompson",
+                company: "Logistics Pro",
+                industry: "Logistics",
+              },
+              {
+                name: "Jessica White",
+                company: "FoodTech Inc",
+                industry: "Food & Beverage",
+              },
+              {
+                name: "Daniel Black",
+                company: "Travel Solutions",
+                industry: "Travel",
+              },
+              {
+                name: "Olivia Brown",
+                company: "Fashion Hub",
+                industry: "Fashion",
+              },
+              {
+                name: "Noah Miller",
+                company: "Sports Tech",
+                industry: "Sports",
+              },
+              {
+                name: "Ava Jones",
+                company: "Entertainment Co",
+                industry: "Entertainment",
+              },
+              {
+                name: "Liam Garcia",
+                company: "Automotive Tech",
+                industry: "Automotive",
+              },
+              {
+                name: "Isabella Moore",
+                company: "Pharma Solutions",
+                industry: "Pharmaceuticals",
+              },
+            ],
+          ];
+
+          // Sidebar typing texts
+          const sidebarTexts = [
+            { field: "company", text: "TechCorp Solutions" },
+            { field: "industry", text: "Software" },
+            { field: "location", text: "San Francisco, CA" },
+            { field: "tags", text: "Enterprise, B2B" },
+            { field: "firstName", text: "Sarah" },
+            { field: "lastName", text: "Chen" },
+            { field: "linkedin", text: "linkedin.com/in/sarahchen" },
+            { field: "email", text: "sarah@techcorp.com" },
+          ];
+
+          // Typing animation function
+          async function typeText(element, text, speed = 50) {
+            element.textContent = "";
+            for (let char of text) {
+              element.textContent += char;
+              await sleep(speed);
+            }
+          }
+
+          // Update table with new data
+          function updateTable(data) {
+            const tbody = document.querySelector(".crm-table tbody");
+            if (!tbody) return;
+
+            tbody.innerHTML = "";
+            data.forEach((row, index) => {
+              const tr = document.createElement("tr");
+              tr.className = `border-b border-neutral-100 hover:bg-neutral-50 transition-colors animate-slide-in`;
+              tr.style.animationDelay = `${0.55 + index * 0.05}s`;
+              tr.innerHTML = `
+                <td class="px-2 py-1.5">
+                  <div class="w-2.5 h-2.5 rounded border border-neutral-300 bg-white"></div>
+                </td>
+                <td class="px-2 py-1.5 text-[10px] font-medium text-neutral-800">${row.name}</td>
+                <td class="px-2 py-1.5 text-[10px] text-neutral-700">${row.company}</td>
+                <td class="px-2 py-1.5 text-[10px] text-neutral-500">${row.industry}</td>
+              `;
+              tbody.appendChild(tr);
+            });
+            lucide.createIcons();
+          }
+
+          // Show toast notification
+          function showToast(message) {
+            const crmContainer = document.querySelector(
+              ".md\\:w-1\\/2.bg-white.rounded-2xl"
+            );
+            if (!crmContainer) return;
+
+            const toast = document.createElement("div");
+            toast.className =
+              "absolute top-4 right-4 bg-green-500 text-white px-3 py-2 rounded-lg shadow-lg z-50 flex items-center gap-2 animate-fade-up";
+            toast.style.maxWidth = "calc(100% - 2rem)";
+            toast.innerHTML = `
+              <i data-lucide="check-circle" class="w-4 h-4 flex-shrink-0"></i>
+              <span class="text-[10px] font-medium truncate">${message}</span>
+            `;
+            crmContainer.appendChild(toast);
+            lucide.createIcons();
+
+            setTimeout(() => {
+              toast.style.opacity = "0";
+              toast.style.transform = "translateY(-10px)";
+              setTimeout(() => toast.remove(), 300);
+            }, 2000);
+          }
+
+          // Main animation loop
+          async function runCRMLoop() {
+            while (true) {
+              // Step 1: Type in sidebar fields
+              const companyField = document.querySelector(".crm-company-field");
+              const industryField = document.querySelector(
+                ".crm-industry-field"
+              );
+              const locationField = document.querySelector(
+                ".crm-location-field"
+              );
+              const tagsField = document.querySelector(".crm-tags-field");
+              const firstNameField = document.querySelector(
+                ".crm-firstname-field"
+              );
+              const lastNameField = document.querySelector(
+                ".crm-lastname-field"
+              );
+              const linkedinField = document.querySelector(
+                ".crm-linkedin-field"
+              );
+              const emailField = document.querySelector(".crm-email-field");
+
+              if (companyField)
+                await typeText(companyField, sidebarTexts[0].text, 20);
+              await sleep(150);
+              if (industryField)
+                await typeText(industryField, sidebarTexts[1].text, 20);
+              await sleep(150);
+              if (locationField)
+                await typeText(locationField, sidebarTexts[2].text, 20);
+              await sleep(150);
+              if (tagsField)
+                await typeText(tagsField, sidebarTexts[3].text, 20);
+              await sleep(150);
+              if (firstNameField)
+                await typeText(firstNameField, sidebarTexts[4].text, 20);
+              await sleep(150);
+              if (lastNameField)
+                await typeText(lastNameField, sidebarTexts[5].text, 20);
+              await sleep(150);
+              if (linkedinField)
+                await typeText(linkedinField, sidebarTexts[6].text, 20);
+              await sleep(150);
+              if (emailField)
+                await typeText(emailField, sidebarTexts[7].text, 20);
+              await sleep(500);
+
+              // Step 2: Update search bar
+              const searchBar = document.querySelector(".crm-search-bar");
+              if (searchBar) {
+                await typeText(searchBar, "Tech", 20);
+                await sleep(300);
+              }
+
+              // Step 3: Update table with filtered data
+              await sleep(300);
+              updateTable(tableDataSets[0]);
+              await sleep(1000);
+
+              // Step 4: Click Campaign button and show toast
+              const campaignBtn = document.querySelector(".crm-campaign-btn");
+              if (campaignBtn) {
+                campaignBtn.style.transform = "scale(0.95)";
+                setTimeout(() => {
+                  campaignBtn.style.transform = "scale(1)";
+                }, 150);
+                showToast("Successfully added!");
+                await sleep(1500);
+              }
+
+              // Step 5: Clear and reset
+              await sleep(1000);
+              if (companyField) companyField.textContent = "company...";
+              if (industryField) industryField.textContent = "industry...";
+              if (locationField) locationField.textContent = "location...";
+              if (tagsField) tagsField.textContent = "tags...";
+              if (firstNameField) firstNameField.textContent = "First Name";
+              if (lastNameField) lastNameField.textContent = "Last Name";
+              if (linkedinField) linkedinField.textContent = "LinkedIn URL";
+              if (emailField) emailField.textContent = "Email";
+              if (searchBar) searchBar.textContent = "Search...";
+
+              // Cycle through different data sets
+              const randomDataSet =
+                tableDataSets[Math.floor(Math.random() * tableDataSets.length)];
+              updateTable(randomDataSet);
+
+              await sleep(1500);
+            }
+          }
+
+          // Wait for DOM to be ready
+          if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", () => {
+              setTimeout(runCRMLoop, 2000);
+            });
+          } else {
+            setTimeout(runCRMLoop, 2000);
+          }
+        })();
       }
     </script>
   </body>
