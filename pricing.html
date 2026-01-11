@@ -5,6 +5,7 @@
 		<title>Leadsync - Outbound Engineering</title>
 		<script src="https://cdn.tailwindcss.com"></script>
 		<script src="https://unpkg.com/lucide@latest"></script>
+		<link rel="stylesheet" href="./slick-slider.css" />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@1,500&amp;display=swap"
 			rel="stylesheet"
@@ -393,6 +394,60 @@
 			.dashboard-image-wrapper:hover {
 				transform: rotateX(5deg) scale(0.95);
 			}
+			/* Testimonials Slider - Fit Content */
+			.testimonials-slider .slick-slide {
+				height: auto !important;
+			}
+			.testimonials-slider .slick-slide > div {
+				height: 100%;
+			}
+			.testimonials-slider .slick-track {
+				display: flex;
+				align-items: flex-start;
+			}
+
+			.testimonials-slider .slick-dots {
+				display: block;
+				position: absolute;
+				left: 0;
+				bottom: -2rem;
+				margin: 0;
+				width: 100%;
+				text-align: center;
+			}
+			.testimonials-slider .slick-dots li {
+				display: inline-block;
+				position: relative;
+				margin-right: 0.625rem;
+				cursor: pointer;
+			}
+			.testimonials-slider .slick-dots li {
+				display: inline-block;
+				position: relative;
+				padding: 0;
+				margin-right: 0.625rem;
+				cursor: pointer;
+			}
+			.testimonials-slider .slick-dots li button {
+				display: block;
+				padding: 0;
+				width: 0.375rem;
+				height: 0.375rem;
+				color: transparent;
+				transition-property: all;
+				transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+				transition-duration: 300ms;
+				transition-duration: 300ms;
+				cursor: pointer;
+				opacity: 1;
+				background: #e6e6e6;
+				border-color: none;
+				border-radius: 20px;
+			}
+			.testimonials-slider .slick-dots li.slick-active button {
+				background: #2563eb;
+				width: 1.25rem;
+			}
 		</style>
 	</head>
 	<body
@@ -426,7 +481,8 @@
 		</div>
 
 		<!-- Navigation -->
-		<nav
+		<!-- Navigation -->
+		<header
 			class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-black/5"
 		>
 			<div
@@ -444,48 +500,184 @@
 						/>
 						<span class="text-black">Leadsync</span>
 					</a>
-					<div
-						class="hidden md:flex items-center gap-6 text-sm font-medium text-neutral-800"
+				</div>
+				<div
+					class="hidden md:flex items-center gap-6 text-sm font-medium text-neutral-800"
+				>
+					<a
+						href="#features"
+						class="hover:text-[#2563eb] transition-colors"
+						>Features</a
 					>
-						<a
-							href="pricing.html"
-							class="flex items-center gap-2 hover:text-[#2563eb] transition-colors"
-						>
-							Pricing
-						</a>
-						<a
-							href="affiliate-program.html"
-							class="hover:text-[#2563eb] transition-colors"
-							>Affiliate
-						</a>
-						<a
-							href="blog.html"
-							class="hover:text-[#2563eb] transition-colors"
-							>Blog</a
-						>
+					<a
+						href="pricing.html"
+						class="flex items-center gap-2 hover:text-[#2563eb] transition-colors"
+					>
+						Pricing
+					</a>
+					<a
+						href="affiliate-program.html"
+						class="hover:text-[#2563eb] transition-colors"
+						>Affiliate
+					</a>
+					<a
+						href="blog.html"
+						class="hover:text-[#2563eb] transition-colors"
+						>Blog</a
+					>
 
-						<a href="contact-us.html">Contact Us</a>
-					</div>
+					<a href="contact-us.html">Contact Us</a>
 				</div>
 				<div class="flex items-center gap-4">
 					<a
 						href="https://app.leadsync.ai/login"
 						target="_blank"
-						class="hidden sm:block text-sm font-medium text-neutral-800 hover:text-[#2563eb] transition-colors"
+						class="hidden md:block text-sm font-medium text-neutral-800 hover:text-[#2563eb] transition-colors"
 					>
 						Login
 					</a>
 					<a
 						href="https://app.leadsync.ai/signup"
 						target="_blank"
-						class="bg-[#2563eb] hover:bg-[#1e40af] text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-all shadow-[0_0_15px_rgba(37,99,235,0.3)] flex items-center gap-2"
+						class="bg-[#2563eb] hidden md:flex hover:bg-[#1e40af] text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-all shadow-[0_0_15px_rgba(37,99,235,0.3)] items-center gap-2"
 					>
 						Sign Up
 						<i data-lucide="arrow-right" class="w-3 h-3"></i>
 					</a>
+					<button
+						id="mobileMenuButton"
+						class="md:hidden inline-flex cursor-pointer items-center justify-center w-10 h-10 rounded-md text-theme-primary focus:outline-none"
+						aria-label="Open menu"
+						aria-expanded="false"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-6 w-6"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M4 6h16M4 12h16M4 18h16"
+							/>
+						</svg>
+					</button>
 				</div>
 			</div>
-		</nav>
+		</header>
+
+		<!-- Mobile Menu -->
+		<div
+			id="mobileBackdrop"
+			class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 opacity-0 invisible transition-opacity duration-300 md:hidden"
+		></div>
+		<div
+			id="mobileMenu"
+			class="fixed top-0 left-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden overflow-y-auto"
+		>
+			<div class="flex flex-col h-full">
+				<!-- Mobile Menu Header -->
+				<div
+					class="flex items-center justify-between p-6 border-b border-black/10"
+				>
+					<a
+						href="/"
+						class="text-xl font-semibold tracking-tight flex items-center gap-2"
+					>
+						<img
+							src="leadsync-logo.avif"
+							alt="Leadsync Logo"
+							class="w-8 h-8 rounded-lg object-contain"
+						/>
+						<span class="text-black">Leadsync</span>
+					</a>
+					<button
+						id="mobileMenuClose"
+						class="inline-flex cursor-pointer items-center justify-center w-10 h-10 rounded-md text-neutral-800 hover:bg-neutral-100 focus:outline-none transition-colors"
+						aria-label="Close menu"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-6 w-6"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M6 18L18 6M6 6l12 12"
+							/>
+						</svg>
+					</button>
+				</div>
+
+				<!-- Mobile Menu Links -->
+				<nav class="flex-1 px-6 py-6">
+					<div class="flex flex-col gap-1">
+						<a
+							href="#features"
+							class="block px-4 py-3 text-base font-medium text-neutral-800 hover:bg-neutral-50 hover:text-[#2563eb] rounded-lg transition-colors"
+							onclick="if(window.closeMobileMenu) window.closeMobileMenu()"
+						>
+							Features
+						</a>
+						<a
+							href="pricing.html"
+							class="block px-4 py-3 text-base font-medium text-neutral-800 hover:bg-neutral-50 hover:text-[#2563eb] rounded-lg transition-colors"
+							onclick="if(window.closeMobileMenu) window.closeMobileMenu()"
+						>
+							Pricing
+						</a>
+						<a
+							href="affiliate-program.html"
+							class="block px-4 py-3 text-base font-medium text-neutral-800 hover:bg-neutral-50 hover:text-[#2563eb] rounded-lg transition-colors"
+							onclick="if(window.closeMobileMenu) window.closeMobileMenu()"
+						>
+							Affiliate
+						</a>
+						<a
+							href="blog.html"
+							class="block px-4 py-3 text-base font-medium text-neutral-800 hover:bg-neutral-50 hover:text-[#2563eb] rounded-lg transition-colors"
+							onclick="if(window.closeMobileMenu) window.closeMobileMenu()"
+						>
+							Blog
+						</a>
+						<a
+							href="contact-us.html"
+							class="block px-4 py-3 text-base font-medium text-neutral-800 hover:bg-neutral-50 hover:text-[#2563eb] rounded-lg transition-colors"
+							onclick="if(window.closeMobileMenu) window.closeMobileMenu()"
+						>
+							Contact Us
+						</a>
+					</div>
+				</nav>
+
+				<!-- Mobile Menu Footer Actions -->
+				<div class="p-6 border-t border-black/10 space-y-3">
+					<a
+						href="https://app.leadsync.ai/login"
+						target="_blank"
+						class="block w-full text-center px-5 py-2.5 text-sm font-medium text-neutral-800 hover:text-[#2563eb] transition-colors"
+						onclick="if(window.closeMobileMenu) window.closeMobileMenu()"
+					>
+						Login
+					</a>
+					<a
+						href="https://app.leadsync.ai/signup"
+						target="_blank"
+						class="block w-full text-center bg-[#2563eb] hover:bg-[#1e40af] text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-all shadow-[0_0_15px_rgba(37,99,235,0.3)]"
+						onclick="if(window.closeMobileMenu) window.closeMobileMenu()"
+					>
+						Sign Up
+					</a>
+				</div>
+			</div>
+		</div>
 
 		<!-- Hero Section -->
 		<section class="relative pt-16 pb-24 overflow-hidden">
@@ -721,38 +913,13 @@
 				<div
 					class="text-center mb-16 flex justify-center items-center gap-6"
 				>
-					<svg
-						class="w-12 h-12 md:w-20 md:h-20 text-neutral-800 opacity-50"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="1"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-					>
-						<path
-							d="M18 20c0-6-3-11-8-12M6 20c0-6 3-11 8-12"
-						></path>
-						<path
-							d="M18 20c-1-2-1.5-3.5-1.5-5M6 20c1-2 1.5-3.5 1.5-5"
-						></path>
-						<path
-							d="M13 13c1 0 2 .5 2 1.5s-1 1.5-2 1.5M11 13c-1 0-2 .5-2 1.5s1 1.5 2 1.5"
-						></path>
-						<path
-							d="M16 10c1 0 2 .5 2 1.5s-1 1.5-2 1.5M8 10c-1 0-2 .5-2 1.5s1 1.5 2 1.5"
-						></path>
-						<path
-							d="M17 7c1 0 2 .5 2 1.5s-1 1.5-2 1.5M7 7c-1 0-2 .5-2 1.5s1 1.5 2 1.5"
-						></path>
-					</svg>
 					<h2
 						class="text-3xl md:text-5xl font-bold tracking-tight max-w-3xl"
 					>
 						<span
 							class="bg-gradient-to-r from-black via-gray-800 to-black bg-clip-text text-transparent"
 						>
-							Don't Just Take Our Word For It
+							Don’t Just Take Our Word For It
 						</span>
 						<br />
 						<small
@@ -761,184 +928,381 @@
 							automating their growth with LeadSync.</small
 						>
 					</h2>
-					<svg
-						class="w-12 h-12 md:w-20 md:h-20 text-neutral-800 opacity-50 transform scale-x-[-1]"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="1"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-					>
-						<path
-							d="M18 20c0-6-3-11-8-12M6 20c0-6 3-11 8-12"
-						></path>
-						<path
-							d="M18 20c-1-2-1.5-3.5-1.5-5M6 20c1-2 1.5-3.5 1.5-5"
-						></path>
-						<path
-							d="M13 13c1 0 2 .5 2 1.5s-1 1.5-2 1.5M11 13c-1 0-2 .5-2 1.5s1 1.5 2 1.5"
-						></path>
-						<path
-							d="M16 10c1 0 2 .5 2 1.5s-1 1.5-2 1.5M8 10c-1 0-2 .5-2 1.5s1 1.5 2 1.5"
-						></path>
-						<path
-							d="M17 7c1 0 2 .5 2 1.5s-1 1.5-2 1.5M7 7c-1 0-2 .5-2 1.5s1 1.5 2 1.5"
-						></path>
-					</svg>
 				</div>
-
-				<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-					<!-- Static Column 1 -->
-					<div class="space-y-6">
-						<div
-							class="bg-neutral-50 rounded-2xl p-6 shadow-sm border border-black/5"
-						>
-							<div class="flex gap-1 text-yellow-400 mb-4">
-								<i
-									data-lucide="star"
-									class="w-4 h-4 fill-current"
-								></i
-								><i
-									data-lucide="star"
-									class="w-4 h-4 fill-current"
-								></i
-								><i
-									data-lucide="star"
-									class="w-4 h-4 fill-current"
-								></i
-								><i
-									data-lucide="star"
-									class="w-4 h-4 fill-current"
-								></i
-								><i
-									data-lucide="star"
-									class="w-4 h-4 fill-current"
-								></i>
-							</div>
-							<p
-								class="text-neutral-900 leading-relaxed mb-6 font-medium text-sm"
+				<div class="">
+					<div class="testimonials-slider">
+						<!-- Static Column 1 -->
+						<div class="px-[10px] h-auto">
+							<div
+								class="bg-neutral-50 rounded-2xl p-6 shadow-sm border border-black/5 h-auto"
 							>
-								"Leadsync built the outbound system we needed.
-								We went from 0 to 15 meetings a month."
-							</p>
-							<div class="flex items-center gap-3">
-								<img
-									src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=100&amp;q=80"
-									class="w-10 h-10 rounded-full object-cover"
-								/>
-								<div>
-									<div
-										class="text-sm font-semibold text-black"
-									>
-										Kieran Routledge
-									</div>
-									<div class="text-[10px] text-neutral-900">
-										Sales Manager @ JR Ortho
+								<div class="flex gap-1 text-yellow-400 mb-4">
+									<i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i>
+								</div>
+								<p
+									class="text-neutral-900 leading-relaxed mb-6 font-medium text-sm"
+								>
+									"In the coaching industry, trust is
+									everything. I was hesitant to automate, but
+									LeadSync feels incredibly human. It helped
+									me connect with HR Directors and fill my
+									last three corporate leadership workshops on
+									autopilot."
+								</p>
+								<div class="flex items-center gap-3">
+									<div>
+										<div
+											class="text-sm font-semibold text-black"
+										>
+											Hanzo Ng
+										</div>
+										<div
+											class="text-[10px] text-neutral-900"
+										>
+											Grandmaster, Sales Ninja Training
+											Sdn. Bhd.
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-
-					<!-- Static Column 2 -->
-					<div class="space-y-6">
-						<div
-							class="bg-neutral-50 rounded-2xl p-6 shadow-sm border border-black/5"
-						>
-							<div class="flex gap-1 text-yellow-400 mb-4">
-								<i
-									data-lucide="star"
-									class="w-4 h-4 fill-current"
-								></i
-								><i
-									data-lucide="star"
-									class="w-4 h-4 fill-current"
-								></i
-								><i
-									data-lucide="star"
-									class="w-4 h-4 fill-current"
-								></i
-								><i
-									data-lucide="star"
-									class="w-4 h-4 fill-current"
-								></i
-								><i
-									data-lucide="star"
-									class="w-4 h-4 fill-current"
-								></i>
-							</div>
-							<p
-								class="text-neutral-900 leading-relaxed mb-6 font-medium text-sm"
+						<!-- Static Column 2 -->
+						<div class="px-[10px] h-auto">
+							<div
+								class="bg-neutral-50 rounded-2xl p-6 shadow-sm border border-black/5 h-auto"
 							>
-								"A true partner in growth. Not just a vendor.
-								Their team is proactive and incredibly smart."
-							</p>
-							<div class="flex items-center gap-3">
-								<img
-									src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=100&amp;q=80"
-									class="w-10 h-10 rounded-full object-cover"
-								/>
-								<div>
-									<div
-										class="text-sm font-semibold text-black"
-									>
-										Sarah Jenkins
-									</div>
-									<div class="text-[10px] text-neutral-900">
-										VP Marketing @ TechFlow
+								<div class="flex gap-1 text-yellow-400 mb-4">
+									<i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i>
+								</div>
+								<p
+									class="text-neutral-900 leading-relaxed mb-6 font-medium text-sm"
+								>
+									"Securing corporate bulk orders used to be a
+									manual grind. LeadSync allows us to target
+									HR managers for team-building events
+									efficiently. We closed three major corporate
+									accounts in Kuala Lumpur last month while
+									saving 20+ hours of admin work."
+								</p>
+								<div class="flex items-center gap-3">
+									<div>
+										<div
+											class="text-sm font-semibold text-black"
+										>
+											Asaduzzaman
+										</div>
+										<div
+											class="text-[10px] text-neutral-900"
+										>
+											Director, A3 Sports Malaysia
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-
-					<!-- Static Column 3 -->
-					<div class="space-y-6">
-						<div
-							class="bg-neutral-50 rounded-2xl p-6 shadow-sm border border-black/5"
-						>
-							<div class="flex gap-1 text-yellow-400 mb-4">
-								<i
-									data-lucide="star"
-									class="w-4 h-4 fill-current"
-								></i
-								><i
-									data-lucide="star"
-									class="w-4 h-4 fill-current"
-								></i
-								><i
-									data-lucide="star"
-									class="w-4 h-4 fill-current"
-								></i
-								><i
-									data-lucide="star"
-									class="w-4 h-4 fill-current"
-								></i
-								><i
-									data-lucide="star"
-									class="w-4 h-4 fill-current"
-								></i>
-							</div>
-							<p
-								class="text-neutral-900 leading-relaxed mb-6 font-medium text-sm"
+						<!-- Static Column 3 -->
+						<div class="px-[10px] h-auto">
+							<div
+								class="bg-neutral-50 rounded-2xl p-6 shadow-sm border border-black/5 h-auto"
 							>
-								"The ROI we've seen in just 3 months is absurd.
-								They paid for themselves 10x over."
-							</p>
-							<div class="flex items-center gap-3">
-								<img
-									src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=100&amp;q=80"
-									class="w-10 h-10 rounded-full object-cover"
-								/>
-								<div>
-									<div
-										class="text-sm font-semibold text-black"
-									>
-										Michael Ross
+								<div class="flex gap-1 text-yellow-400 mb-4">
+									<i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i>
+								</div>
+								<p
+									class="text-neutral-900 leading-relaxed mb-6 font-medium text-sm"
+								>
+									"The A/B testing capability is brilliant. As
+									a marketer, I need data, not guesses.
+									LeadSync showed us exactly which message
+									resonated, helping us double our qualified
+									lead volume in just one month."
+								</p>
+								<div class="flex items-center gap-3">
+									<div>
+										<div
+											class="text-sm font-semibold text-black"
+										>
+											Azaman
+										</div>
+										<div
+											class="text-[10px] text-neutral-900"
+										>
+											Freelance Marketer
+										</div>
 									</div>
-									<div class="text-[10px] text-neutral-900">
-										Founder @ DataSync
+								</div>
+							</div>
+						</div>
+						<!-- Static Column 4 -->
+						<div class="px-[10px] h-auto">
+							<div
+								class="bg-neutral-50 rounded-2xl p-6 shadow-sm border border-black/5 h-auto"
+							>
+								<div class="flex gap-1 text-yellow-400 mb-4">
+									<i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i>
+								</div>
+								<p
+									class="text-neutral-900 leading-relaxed mb-6 font-medium text-sm"
+								>
+									"Expanding our NetSuite services globally
+									required precise timing. Our entire sales
+									team uses LeadSync to target prospects in
+									the US, Europe, and Asia simultaneously. The
+									ability to automate outreach in the
+									prospect's local time zone has been critical
+									for breaking into new international
+									markets."
+								</p>
+								<div class="flex items-center gap-3">
+									<div>
+										<div
+											class="text-sm font-semibold text-black"
+										>
+											Dipto R
+										</div>
+										<div
+											class="text-[10px] text-neutral-900"
+										>
+											CEO, Omnilab Enterprise Solutions
+											Ltd.
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Static Column 5 -->
+						<div class="px-[10px] h-auto">
+							<div
+								class="bg-neutral-50 rounded-2xl p-6 shadow-sm border border-black/5 h-auto"
+							>
+								<div class="flex gap-1 text-yellow-400 mb-4">
+									<i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i>
+								</div>
+								<p
+									class="text-neutral-900 leading-relaxed mb-6 font-medium text-sm"
+								>
+									"Building a personal brand requires
+									consistency. LeadSync allows me to network
+									with industry peers and grow my audience
+									organically, without being glued to my
+									screen. It’s like having a networking
+									assistant working 24/7 ."
+								</p>
+								<div class="flex items-center gap-3">
+									<div>
+										<div
+											class="text-sm font-semibold text-black"
+										>
+											Ashiqul Haque
+										</div>
+										<div
+											class="text-[10px] text-neutral-900"
+										>
+											Solo Entrepreneur
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Static Column 6 -->
+						<div class="px-[10px] h-auto">
+							<div
+								class="bg-neutral-50 rounded-2xl p-6 shadow-sm border border-black/5 h-auto"
+							>
+								<div class="flex gap-1 text-yellow-400 mb-4">
+									<i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i>
+								</div>
+								<p
+									class="text-neutral-900 leading-relaxed mb-6 font-medium text-sm"
+								>
+									"The money is in the follow-up, but I hate
+									chasing people. LeadSync handles the entire
+									nurturing sequence with personalized
+									messages that actually look like I wrote
+									them. Now, I spend my day on virtual calls
+									closing deals while the system works in the
+									background."
+								</p>
+								<div class="flex items-center gap-3">
+									<div>
+										<div
+											class="text-sm font-semibold text-black"
+										>
+											Stefan Kendzierskyj
+										</div>
+										<div
+											class="text-[10px] text-neutral-900"
+										>
+											Director, SK Consultancy Ltd.
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Static Column 7 -->
+						<div class="px-[10px] h-auto">
+							<div
+								class="bg-neutral-50 rounded-2xl p-6 shadow-sm border border-black/5 h-auto"
+							>
+								<div class="flex gap-1 text-yellow-400 mb-4">
+									<i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i
+									><i
+										data-lucide="star"
+										class="w-4 h-4 fill-current"
+									></i>
+								</div>
+								<p
+									class="text-neutral-900 leading-relaxed mb-6 font-medium text-sm"
+								>
+									"As a one-man army, I need to focus on
+									rendering and design, not cold calling.
+									LeadSync automates my entire pitch process.
+									It helped me expand from local agencies to
+									landing international VFX contracts. Now, I
+									wake up to hot leads in my inbox and spend
+									my day creating, not prospecting."
+								</p>
+								<div class="flex items-center gap-3">
+									<div>
+										<div
+											class="text-sm font-semibold text-black"
+										>
+											Fadzli
+										</div>
+										<div
+											class="text-[10px] text-neutral-900"
+										>
+											CGI Specialist, FABR Studio
+										</div>
 									</div>
 								</div>
 							</div>
@@ -1389,6 +1753,9 @@
 			</div>
 		</footer>
 		<!-- Javascript Logic -->
+		<script src="./jquery.min.js"></script>
+		<script src="./slick-slider.js"></script>
+		<script src="./main.js"></script>
 		<script>
 			// Initialize Lucide Icons
 			lucide.createIcons();
