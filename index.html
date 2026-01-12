@@ -3831,9 +3831,106 @@
 
 			let currentBillingPeriod = 'monthly';
 
+			// Demo pricing plans data for localhost
+			const demoPricingPlans = [
+				{
+					id: 'a69512ba-8f1a-4bc2-a43a-7c30ef491c09',
+					name: 'Pro',
+					plan_code: 'leadsync_pro',
+					display: true,
+					description:
+						'For founders & small teams starting LinkedIn outreach',
+					minimum_seat_count: 1,
+					plan_type: 'LEADSYNC',
+					order: 2,
+					is_active: true,
+					engine_quota_limit: null,
+					features: [
+						'✓ Unlimited Campaigns',
+						'✓ Built-in CRM to Manage Leads',
+						'✓ Smart LinkedIn Inbox',
+						'✓ Custom Personalization Snippets',
+						'✓ InMail Automation',
+						'✓ Add Notes to Leads',
+						'✓ Campaign Reports & Analytics',
+					],
+					trial_available: false,
+					trial_period_in_days: 14,
+					max_search_limit: 0,
+					created_at: '2025-06-12T08:45:56.342Z',
+					updated_at: '2026-01-07T03:49:34.415Z',
+					max_download_limit: 1000,
+					max_view_limit: 1000,
+					price: {
+						base_price: 50,
+						monthly_base_price: 50,
+						quarterly_base_price: 150,
+						yearly_base_price: 600,
+						monthly_discount_percentage: 20,
+						quarterly_discount_percentage: 30,
+						yearly_discount_percentage: 50,
+						monthly: 40,
+						quarterly: 105,
+						yearly: 300,
+					},
+				},
+				{
+					id: '331f5e68-6bab-45e8-9e2f-c7c55d642fac',
+					name: 'Advance',
+					plan_code: 'leadsync_advance',
+					display: true,
+					description: 'For growing teams that need data + scale',
+					minimum_seat_count: 1,
+					plan_type: 'LEADSYNC',
+					order: 3,
+					is_active: true,
+					engine_quota_limit: null,
+					features: [
+						'✓ Everything in Pro, plus',
+						'✓ Advanced Data Search',
+						'✓ 1,500 Validated Leads Included (per cycle)',
+						'✓ Multiple Workspaces',
+						'✓ 1-to-1 Strategy Session (for bulk buyers)',
+					],
+					trial_available: false,
+					trial_period_in_days: 14,
+					max_search_limit: 0,
+					created_at: '2025-05-28T10:03:24.965Z',
+					updated_at: '2026-01-07T03:50:32.979Z',
+					max_download_limit: 2000,
+					max_view_limit: 2000,
+					price: {
+						base_price: 70,
+						monthly_base_price: 70,
+						quarterly_base_price: 210,
+						yearly_base_price: 840,
+						monthly_discount_percentage: 20,
+						quarterly_discount_percentage: 30,
+						yearly_discount_percentage: 50,
+						monthly: 56,
+						quarterly: 147,
+						yearly: 420,
+					},
+				},
+			];
+
 			// Fetch pricing plans from API
 			async function fetchPricingPlans() {
 				try {
+					// Check if running on localhost - use demo data
+					const isLocalhost =
+						window.location.hostname === 'localhost' ||
+						window.location.hostname === '127.0.0.1' ||
+						window.location.port === '5500';
+
+					if (isLocalhost) {
+						// Use demo data for localhost
+						pricingPlans = demoPricingPlans;
+						generatePricingCards();
+						return;
+					}
+
+					// Fetch from API for production
 					const response = await fetch(
 						'https://api.leadsync.ai/stripe-plan?project_type=LEADSYNC&show_trial=0'
 					);
@@ -3847,6 +3944,16 @@
 					generatePricingCards();
 				} catch (error) {
 					console.error('Error fetching pricing plans:', error);
+					// Fallback to demo data on error if on localhost
+					const isLocalhost =
+						window.location.hostname === 'localhost' ||
+						window.location.hostname === '127.0.0.1' ||
+						window.location.port === '5500';
+					if (isLocalhost) {
+						pricingPlans = demoPricingPlans;
+						generatePricingCards();
+						return;
+					}
 					// Show error message or fallback UI
 					const container = document.getElementById('pricing-cards');
 					if (container) {
@@ -3922,7 +4029,7 @@
 							<span class="text-lg text-gray-500 font-medium line-through">$${
 								plan.price[`${currentBillingPeriod}_base_price`]
 							}</span>
-							<span class="text-xs font-semibold bg-[##2563eb]/20 text-[#2563eb] px-2 py-1 rounded">Save ${
+							<span class="text-xs font-semibold bg-[#2563eb]/20 text-[#2563eb] px-2 py-1 rounded">Save ${
 								plan.price[
 									`${currentBillingPeriod}_discount_percentage`
 								]
@@ -4050,6 +4157,7 @@
 						`[data-plan-code="${plan.plan_code}"]`
 					);
 					if (card) {
+						// Update current price
 						const priceEl = card.querySelector(
 							`[data-price="${plan.plan_code}"]`
 						);
@@ -4060,43 +4168,84 @@
 						// Update base price and discount badge
 						const basePriceKey = `${period}_base_price`;
 						const discountKey = `${period}_discount_percentage`;
-						const priceContainer = priceEl?.parentElement;
 
-						// Remove existing base price and discount elements
-						const existingBasePrice =
-							priceContainer?.querySelector('.line-through');
-						const existingDiscount = priceContainer?.querySelector(
-							'.bg-\\[\\#2563eb\\]\\/10'
+						// Find the mb-4 container that holds the price structure
+						const priceSection =
+							card.querySelector('.mb-6 > .mb-4');
+						if (!priceSection) return;
+
+						// Find or create the discount container div
+						let discountContainer = priceSection.querySelector(
+							'.flex.items-center.gap-2.mb-2'
 						);
-						if (existingBasePrice) existingBasePrice.remove();
-						if (existingDiscount) existingDiscount.remove();
 
-						// Add base price and discount if they exist and are different
-						if (
+						// Check if we need to show discount
+						const hasDiscount =
 							plan.price[basePriceKey] &&
-							plan.price[basePriceKey] !== plan.price[period] &&
-							priceContainer
-						) {
-							const basePriceSpan =
-								document.createElement('span');
-							basePriceSpan.className =
-								'text-lg text-neutral-400 line-through';
-							basePriceSpan.textContent = `$${plan.price[basePriceKey]}`;
-							priceContainer.appendChild(basePriceSpan);
+							plan.price[basePriceKey] !== plan.price[period];
 
-							const discountSpan = document.createElement('span');
-							discountSpan.className =
-								'bg-[#2563eb]/10 text-[#2563eb] text-xs font-semibold px-2 py-0.5 rounded-full';
-							discountSpan.textContent = `${plan.price[discountKey]}% OFF`;
-							priceContainer.appendChild(discountSpan);
+						if (hasDiscount) {
+							// Create discount container if it doesn't exist
+							if (!discountContainer) {
+								discountContainer =
+									document.createElement('div');
+								discountContainer.className =
+									'flex items-center gap-2 mb-2';
+								// Insert before the price div (flex items-baseline)
+								const priceDiv = priceSection.querySelector(
+									'.flex.items-baseline'
+								);
+								if (priceDiv) {
+									priceSection.insertBefore(
+										discountContainer,
+										priceDiv
+									);
+								} else {
+									priceSection.appendChild(discountContainer);
+								}
+							}
+
+							// Update or create base price span
+							let basePriceSpan =
+								discountContainer.querySelector(
+									'.line-through'
+								);
+							if (!basePriceSpan) {
+								basePriceSpan = document.createElement('span');
+								basePriceSpan.className =
+									'text-lg text-gray-500 font-medium line-through';
+								discountContainer.appendChild(basePriceSpan);
+							}
+							basePriceSpan.textContent = `$${plan.price[basePriceKey]}`;
+
+							// Update or create discount badge span
+							// Find the span that's not the base price (line-through)
+							let discountSpan = Array.from(
+								discountContainer.querySelectorAll('span')
+							).find(
+								(span) =>
+									!span.classList.contains('line-through')
+							);
+							if (!discountSpan) {
+								discountSpan = document.createElement('span');
+								discountSpan.className =
+									'text-xs font-semibold bg-[#2563eb]/20 text-[#2563eb] px-2 py-1 rounded';
+								discountContainer.appendChild(discountSpan);
+							}
+							discountSpan.textContent = `Save ${plan.price[discountKey]}%`;
+						} else {
+							// Remove discount container if discount doesn't exist
+							if (discountContainer) {
+								discountContainer.remove();
+							}
 						}
 
 						// Update billing period text
 						const billingTextEl = card.querySelector(
-							'.text-xs.text-neutral-500'
+							'.mb-6 > .text-xs.text-neutral-500'
 						);
 						if (billingTextEl) {
-							billingTextEl.textContent = `billed ${period}`;
+							billingTextEl.textContent = `Billed ${period}`;
 						}
 					}
 				});
