@@ -458,15 +458,15 @@
 			class="bg-[#2563eb] text-white border-b border-[#2563eb]/20 py-3 px-4 flex items-center justify-center text-sm relative z-50"
 		>
 			<div
-				class="flex flex-col sm:flex-row items-center gap-3 text-center"
+				class="flex flex-col sm:flex-row items-center gap-1 text-center"
 			>
 				<span class="text-white"
-					>Seamlessly import LinkedIn leads with a few clicks.)</span
+					>Seamlessly import LinkedIn leads with a few clicks.</span
 				>
 				<a
 					href="https://chromewebstore.google.com/detail/leadsync-find-close-leads/gnpileefiiedbjojmfnopcmhjepdikok"
 					target="_blank"
-					class="bg-[#2563eb]/10 hover:bg-[#2563eb]/20 text-white border border-[#2563eb]/30 px-4 py-1 rounded-full text-xs font-semibold transition-colors flex items-center gap-1 group"
+					class="bg-[#2563eb]/10 underline hover:bg-[#2563eb]/20 text-white border border-[#2563eb]/30 py-1 rounded-full text-xs font-semibold transition-colors flex items-center gap-1 group"
 				>
 					Install the extension today!
 					<i
@@ -517,7 +517,11 @@
 						>Affiliate
 					</a>
 
-					<a href="contact-us.html">Contact Us</a>
+					<a
+						href="contact-us.html"
+						class="hover:text-[#2563eb] transition-colors"
+						>Contact Us</a
+					>
 				</div>
 				<div class="flex items-center gap-4">
 					<a
@@ -3816,13 +3820,12 @@
 				name: 'Agency',
 				description: 'Perfect for agencies managing multiple clients.',
 				features: [
-					'✓ Unlimited LinkedIn outreach campaigns',
-					'✓ Advanced lead management',
-					'✓ Email notifications',
-					'✓ Basic analytics',
-					'✓ Custom workflows',
-					'✗ Priority support',
-					'✗ Custom integrations',
+					'✓ White-Label Solution',
+					'✓ Custom Pricing Based on Usage',
+					'✓ Volume Discounts',
+					'✓ Dedicated Account Manager',
+					'✓ Migration & Onboarding Support',
+					'✓ Priority Support',
 				],
 			};
 
@@ -3916,7 +3919,9 @@
 					plan.price[`${currentBillingPeriod}_base_price`] !== price
 						? `
 						<div class="flex items-center gap-2 mb-2">
-							<span class="text-lg text-gray-500 font-medium line-through">$50</span>
+							<span class="text-lg text-gray-500 font-medium line-through">$${
+								plan.price[`${currentBillingPeriod}_base_price`]
+							}</span>
 							<span class="text-xs font-semibold bg-[##2563eb]/20 text-[#2563eb] px-2 py-1 rounded">Save ${
 								plan.price[
 									`${currentBillingPeriod}_discount_percentage`
@@ -3931,7 +3936,7 @@
 					<span class="text-gray-500 text-sm font-medium">/month</span>
 				</div>
 			</div>
-            <p class="text-xs text-neutral-500">billed ${currentBillingPeriod}</p>
+            <p class="text-xs text-neutral-500">Billed ${currentBillingPeriod}</p>
           </div>
           <a href="https://app.leadsync.ai/signup" target="_blank" class="w-full block text-center ${
 				plan.isPopular

@@ -458,15 +458,15 @@
 			class="bg-[#2563eb] text-white border-b border-[#2563eb]/20 py-3 px-4 flex items-center justify-center text-sm relative z-50"
 		>
 			<div
-				class="flex flex-col sm:flex-row items-center gap-3 text-center"
+				class="flex flex-col sm:flex-row items-center gap-1 text-center"
 			>
 				<span class="text-white"
-					>Seamlessly import LinkedIn leads with a few clicks.)</span
+					>Seamlessly import LinkedIn leads with a few clicks.</span
 				>
 				<a
 					href="https://chromewebstore.google.com/detail/leadsync-find-close-leads/gnpileefiiedbjojmfnopcmhjepdikok"
 					target="_blank"
-					class="bg-[#2563eb]/10 hover:bg-[#2563eb]/20 text-white border border-[#2563eb]/30 px-4 py-1 rounded-full text-xs font-semibold transition-colors flex items-center gap-1 group"
+					class="bg-[#2563eb]/10 underline hover:bg-[#2563eb]/20 text-white border border-[#2563eb]/30 py-1 rounded-full text-xs font-semibold transition-colors flex items-center gap-1 group"
 				>
 					Install the extension today!
 					<i
@@ -501,8 +501,13 @@
 					class="hidden md:flex items-center gap-6 text-sm font-medium text-neutral-800"
 				>
 					<a
+						href="index.html#features"
+						class="hover:text-[#2563eb] transition-colors"
+						>Features</a
+					>
+					<a
 						href="pricing.html"
-						class="flex items-center gap-2 text-[#2563eb] hover:text-[#2563eb] transition-colors"
+						class="text-[#2563eb] hover:text-[#2563eb] transition-colors"
 					>
 						Pricing
 					</a>
@@ -512,7 +517,11 @@
 						>Affiliate
 					</a>
 
-					<a href="contact-us.html">Contact Us</a>
+					<a
+						href="contact-us.html"
+						class="hover:text-[#2563eb] transition-colors"
+						>Contact Us</a
+					>
 				</div>
 				<div class="flex items-center gap-4">
 					<a
@@ -605,6 +614,13 @@
 				<!-- Mobile Menu Links -->
 				<nav class="flex-1 px-6 py-6">
 					<div class="flex flex-col gap-1">
+						<a
+							href="index.html#features"
+							class="block px-4 py-3 text-base font-medium text-neutral-800 hover:bg-neutral-50 hover:text-[#2563eb] rounded-lg transition-colors"
+							onclick="if(window.closeMobileMenu) window.closeMobileMenu()"
+						>
+							Features
+						</a>
 						<a
 							href="pricing.html"
 							class="block px-4 py-3 text-base font-medium text-neutral-800 hover:bg-neutral-50 hover:text-[#2563eb] rounded-lg transition-colors"
@@ -1720,13 +1736,12 @@
 				name: 'Agency',
 				description: 'Perfect for agencies managing multiple clients.',
 				features: [
-					'✓ Unlimited LinkedIn outreach campaigns',
-					'✓ Advanced lead management',
-					'✓ Email notifications',
-					'✓ Basic analytics',
-					'✓ Custom workflows',
-					'✗ Priority support',
-					'✗ Custom integrations',
+					'✓ White-Label Solution',
+					'✓ Custom Pricing Based on Usage',
+					'✓ Volume Discounts',
+					'✓ Dedicated Account Manager',
+					'✓ Migration & Onboarding Support',
+					'✓ Priority Support',
 				],
 			};
 
@@ -1813,28 +1828,30 @@
             <h3 class="text-2xl font-semibold text-black">${plan.name}</h3>
           </div>
           <p class="text-neutral-700 mb-6 text-sm">${plan.description}</p>
-          <div class="mb-6">
+          <div class="mb-4">
 				${
 					plan.price[`${currentBillingPeriod}_base_price`] &&
 					plan.price[`${currentBillingPeriod}_base_price`] !== price
 						? `
-							<div class="flex items-center gap-2 mb-2">
-								<span class="text-lg text-gray-500 font-medium line-through">$50</span>
-								<span class="text-xs font-semibold bg-[##2563eb]/20 text-[#2563eb] px-2 py-1 rounded">Save ${
-									plan.price[
-										`${currentBillingPeriod}_discount_percentage`
-									]
-								}%</span>
-							</div>
-							`
+						<div class="flex items-center gap-2 mb-2">
+							<span class="text-lg text-gray-500 font-medium line-through">$${
+								plan.price[`${currentBillingPeriod}_base_price`]
+							}</span>
+							<span class="text-xs font-semibold bg-[##2563eb]/20 text-[#2563eb] px-2 py-1 rounded">Save ${
+								plan.price[
+									`${currentBillingPeriod}_discount_percentage`
+								]
+							}%</span>
+						</div>
+						`
 						: ''
 				}
 				<div class="flex items-baseline">
 					<span class="text-4xl font-bold" data-price="${plan.plan_code}">$${price}</span>
 					<span class="text-gray-500 text-sm font-medium">/month</span>
 				</div>
-            <p class="text-xs text-neutral-500">billed ${currentBillingPeriod}</p>
-          </div>
+				<p class="text-xs text-neutral-500">Billed ${currentBillingPeriod}</p>
+			</div>
           <a href="https://app.leadsync.ai/signup" target="_blank" class="w-full block text-center ${
 				plan.isPopular
 					? 'bg-[#2563eb] hover:bg-[#1e40af] shadow-lg'
