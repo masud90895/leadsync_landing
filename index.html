@@ -3839,7 +3839,7 @@
 					plan_code: 'leadsync_pro',
 					display: true,
 					description:
-						'For founders & small teams starting LinkedIn outreach',
+						'For founders & small teams starting outreach',
 					minimum_seat_count: 1,
 					plan_type: 'LEADSYNC',
 					order: 2,
@@ -3991,14 +3991,13 @@
 				const card = document.createElement('div');
 				card.className = `relative bg-white border-2 ${
 					plan.isPopular ? 'border-[#2563eb]' : 'border-black/10'
-				} rounded-2xl p-8 ${
+				} rounded-2xl p-6 flex flex-col ${
 					plan.isPopular
 						? 'shadow-xl hover:shadow-2xl transform scale-105'
 						: 'shadow-lg hover:shadow-xl'
 				} transition-all`;
 				card.dataset.planCode = plan.plan_code;
 
-				const icon = plan.isPopular ? 'crown' : 'star';
 				const price = plan.price[currentBillingPeriod];
 
 				card.innerHTML = `
@@ -4015,12 +4014,11 @@
           <div class="flex items-center gap-2 mb-4 ${
 				plan.isPopular ? 'mt-4' : ''
 			}">
-            <i data-lucide="${icon}" class="w-5 h-5 text-[#2563eb]"></i>
             <h3 class="text-2xl font-semibold text-black">${plan.name}</h3>
           </div>
           <p class="text-neutral-700 mb-6 text-sm">${plan.description}</p>
           <div class="mb-6">
-			<div class="mb-4">
+			<div class="mb-1">
 				${
 					plan.price[`${currentBillingPeriod}_base_price`] &&
 					plan.price[`${currentBillingPeriod}_base_price`] !== price
@@ -4040,19 +4038,12 @@
 				}
 				<div class="flex items-baseline">
 					<span class="text-4xl font-bold" data-price="${plan.plan_code}">$${price}</span>
-					<span class="text-gray-500 text-sm font-medium">/month</span>
+					
 				</div>
 			</div>
             <p class="text-xs text-neutral-500">Billed ${currentBillingPeriod}</p>
           </div>
-          <a href="https://app.leadsync.ai/signup" target="_blank" class="w-full block text-center ${
-				plan.isPopular
-					? 'bg-[#2563eb] hover:bg-[#1e40af] shadow-lg'
-					: 'bg-[#1e40af] hover:bg-[#2563eb]'
-			} text-white font-medium py-3 rounded-lg transition-all mb-6">
-            Get Started
-          </a>
-          <ul class="space-y-3">
+          <ul class="space-y-3 mb-6">
             ${plan.features
 				.map(
 					(feature) => `
@@ -4067,6 +4058,14 @@
 				)
 				.join('')}
           </ul>
+          <div class="flex-grow"></div>
+          <a href="https://app.leadsync.ai/signup" target="_blank" class="w-full block text-center ${
+				plan.isPopular
+					? 'bg-[#2563eb] hover:bg-[#1e40af] shadow-lg'
+					: 'bg-[#1e40af] hover:bg-[#2563eb]'
+			} text-white font-medium py-3 rounded-lg transition-all">
+            Get Started
+          </a>
         `;
 
 				return card;
@@ -4075,21 +4074,17 @@
 			function createAgencyCard() {
 				const card = document.createElement('div');
 				card.className =
-					'relative bg-white border-2 border-black/10 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all';
+					'relative bg-white border-2 border-black/10 rounded-2xl p-8 flex flex-col shadow-lg hover:shadow-xl transition-all';
 
 				card.innerHTML = `
           <div class="flex items-center gap-2 mb-4">
-            <i data-lucide="star" class="w-5 h-5 text-[#2563eb]"></i>
             <h3 class="text-2xl font-semibold text-black">Agency</h3>
           </div>
           <p class="text-neutral-700 mb-6 text-sm">${agencyPlan.description}</p>
           <div class="mb-6">
-            <span class="text-4xl font-bold text-[#2563eb]">Custom</span>
+            <span class="text-4xl font-bold">Custom Pricing</span>
           </div>
-          <button onclick="document.getElementById('agency-form-modal').classList.remove('hidden')" class="w-full bg-[#1e40af] hover:bg-[#2563eb] text-white font-medium py-3 rounded-lg transition-all mb-6">
-            Contact Us
-          </button>
-          <ul class="space-y-3">
+          <ul class="space-y-3 mb-6">
             ${agencyPlan.features
 				.map((feature) => {
 					const isIncluded = feature.startsWith('✓');
@@ -4111,6 +4106,10 @@
 				})
 				.join('')}
           </ul>
+          <div class="flex-grow"></div>
+          <button onclick="document.getElementById('agency-form-modal').classList.remove('hidden')" class="w-full bg-[#1e40af] hover:bg-[#2563eb] text-white font-medium py-3 rounded-lg transition-all">
+            Contact Us
+          </button>
         `;
 
 				return card;
@@ -4171,7 +4170,7 @@
 
 						// Find the mb-4 container that holds the price structure
 						const priceSection =
-							card.querySelector('.mb-6 > .mb-4');
+							card.querySelector('.mb-6 > .mb-1');
 						if (!priceSection) return;
 
 						// Find or create the discount container div
